@@ -1,29 +1,36 @@
+
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Moon & Feather</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonfeather</title>
   <style>
     body {
-      background-color: #1E2A38;
-      color: white;
-      font-family: 'Noto Sans', sans-serif;
-      padding: 40px;
-      text-align: center;
+      background-color: #dfefff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
-    input {
-      width: 80%;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: none;
-      margin-top: 20px;
+    .chat-box {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    .chat-box p {
+      margin: 10px 0;
     }
   </style>
 </head>
 <body>
-  <h1>안녕 :) 오늘 하루는 어땠어?</h1>
-  <input type="text" placeholder="하고 싶은 말을 써줘" />
+  <div class="chat-box">
+    <p><strong>Moonfeather:</strong> 안녕, 오늘 하루는 어땠어?</p>
+  </div>
 </body>
 </html>
