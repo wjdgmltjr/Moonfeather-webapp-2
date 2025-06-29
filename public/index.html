@@ -1,36 +1,93 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moonfeather</title>
   <style>
     body {
-      background-color: #dfefff;
-      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e6f2ff;
+      font-family: Arial, sans-serif;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+    header {
+      margin-top: 30px;
+      font-size: 1.5em;
+      color: #333;
     }
     .chat-box {
       background: white;
+      margin-top: 20px;
       padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 500px;
     }
-    .chat-box p {
-      margin: 10px 0;
+    .chat-log {
+      min-height: 120px;
+      margin-bottom: 20px;
+    }
+    .chat-log p {
+      margin: 0.5em 0;
+    }
+    input, button {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    input {
+      width: 70%;
+    }
+    button {
+      margin-left: 10px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #357ab8;
     }
   </style>
 </head>
 <body>
+  <header>🌙 Moonfeather</header>
   <div class="chat-box">
-    <p><strong>Moonfeather:</strong> 안녕, 오늘 하루는 어땠어?</p>
+    <div class="chat-log" id="chat-log">
+      <p><strong>Moonfeather:</strong> 안녕, 오늘 하루는 어땠어?</p>
+    </div>
+    <input type="text" id="userInput" placeholder="질문을 입력해줘..." />
+    <button onclick="submitMessage()">입력</button>
+    <button onclick="suggestImproved()">질문 수정</button>
   </div>
+
+  <script>
+    function submitMessage() {
+      const input = document.getElementById('userInput');
+      const log = document.getElementById('chat-log');
+      const text = input.value.trim();
+      if (text) {
+        log.innerHTML += `<p><strong>나:</strong> ${text}</p>`;
+        log.innerHTML += `<p><strong>Moonfeather:</strong> 좋은 질문이야. 곧 대답해줄게!</p>`;
+        input.value = "";
+      }
+    }
+
+    function suggestImproved() {
+      const input = document.getElementById('userInput').value.trim();
+      if (!input) return alert("먼저 질문을 입력해줘!");
+      const improved = input.replace(/뭐야|뭐임|이게 뭔데/g, "무엇인가요").replace(/왜/g, "어떤 이유로");
+      const log = document.getElementById('chat-log');
+      log.innerHTML += `<p><strong>Moonfeather (수정 제안):</strong> "${improved}" 이렇게 물어보는 건 어때?</p>`;
+    }
+  </script>
 </body>
 </html>
