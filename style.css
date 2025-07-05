@@ -48,19 +48,51 @@ button:hover {
   border-radius: 8px;
   white-space: pre-wrap;
 }
-document.querySelector("#ask-button").addEventListener("click", async () => {
-  const question = document.querySelector("#question-input").value;
-  const responseBox = document.querySelector("#response");
-  responseBox.innerText = "답변을 불러오는 중이에요...";
+body {
+  background-color: #e0f7fa;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+h1 {
+  margin-bottom: 10px;
+}
+.greeting {
+  margin-bottom: 20px;
+  color: #00796b;
+}
+#question-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+#ask-button {
+  padding: 10px 20px;
+  background-color: #00796b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#ask-button:hover {
+  background-color: #004d40;
+}
+#response {
+  margin-top: 20px;
+  color: #333;
+}
 
-  const res = await fetch("https://us-central1-your-project-id.cloudfunctions.net/ask", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ prompt: question })
-  });
-
-  const data = await res.json();
-  responseBox.innerText = data.answer;
-});
